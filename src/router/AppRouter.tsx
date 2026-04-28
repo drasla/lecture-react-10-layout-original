@@ -9,10 +9,10 @@ import AuthLayout from "../layouts/AuthLayout.tsx";
 import Login from "../pages/auth/Login.tsx";
 import SignUp from "../pages/auth/SignUp.tsx";
 
-export const router = (onClick: () => void) =>
+export const router = () =>
     createBrowserRouter([
         {
-            element: <MainLayout onClick={onClick} />, // 레이아웃 컴포넌트
+            element: <MainLayout />, // 레이아웃 컴포넌트
             children: [
                 { path: "/", element: <Home /> },
                 { path: "/about", element: <About /> },

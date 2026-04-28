@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import styled from "styled-components";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/theme/ThemeContext.tsx";
 
 const Head = styled.header`
     height: 64px;
@@ -31,11 +33,11 @@ const NavRight = styled.div`
     gap: 20px;
 `;
 
-type Props = {
-    onClick: () => void;
-};
+function Header() {
+    const context = useContext(ThemeContext);
+    if (!context) throw new Error("Provider 안에서 사용해주세요!");
+    const { toggleTheme } = context;
 
-function Header({ onClick }: Props) {
     return (
         <Head>
             <NavLeft>
@@ -47,7 +49,7 @@ function Header({ onClick }: Props) {
             </NavLeft>
             <NavRight>
                 <Link to={"/auth/login"}>로그인</Link>
-                <button onClick={onClick}>테마변경</button>
+                <button onClick={toggleTheme}>테마변경</button>
             </NavRight>
         </Head>
     );
